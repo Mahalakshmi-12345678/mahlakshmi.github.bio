@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ff007f, #ffcc00, #00ffcc, #8000ff); /* Crazy vibrant gradient background */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite; /* Smooth background animation */
+      opacity: 0;
+      animation: fadeIn 2s forwards; /* Fade in effect on page load */
+      position: relative; /* Make sure the stars are positioned relative to the body */
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    header {
+      background-color: rgba(58, 58, 168, 0.8); /* Semi-transparent header background */
+      width: 100%;
+      padding: 1em 0;
+      text-align: center;
+      border-bottom: 2px solid #fff;
+      animation: floatingText 2s ease-in-out infinite alternate;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+      font-weight: bold;
+      text-shadow: 0 0 15px #fff, 0 0 30px #ff007f; /* Glowing text effect */
+    }
+
+    @keyframes floatingText {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    main {
+      text-align: center;
+      animation: floatingText 3s ease-in-out infinite alternate;
+    }
+
+    main h2 {
+      margin-top: 1em;
+      font-size: 1.5em;
+      animation: glowingText 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowingText {
+      0% { text-shadow: 0 0 10px #fff, 0 0 20px #ff007f; }
+      50% { text-shadow: 0 0 20px #fff, 0 0 40px #ffcc00; }
+      100% { text-shadow: 0 0 10px #fff, 0 0 20px #00ffcc; }
+    }
+
+    main p {
+      font-size: 1.2em;
+      margin: 0.5em 0 1.5em;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+    }
+
+    .button {
+      padding: 0.8em 2em;
+      font-size: 1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+      transform: scale(1.1); /* Button grow effect on hover */
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 1em 0;
+      font-size: 0.9em;
+      background-color: rgba(58, 58, 168, 0.8); /* Same semi-transparent background for footer */
+      color: white;
+      width: 100%;
+    }
+
+    footer p {
+      animation: glowingText 1.5s ease-in-out infinite alternate;
+    }
+
+    /* Stars Effect */
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background-color: white;
+      animation: starAnimation 2s ease-in-out infinite;
+    }
+
+    @keyframes starAnimation {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Diwali Blaster Effect */
+    .diwali-blast {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      z-index: 1000;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      animation: diwaliBlaster 1s forwards;
+    }
+
+    .diwali-star {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ffeb3b;
+      border-radius: 50%;
+      opacity: 0;
+      animation: diwaliStarAnimation 1s forwards;
+    }
+
+    @keyframes diwaliBlaster {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes diwaliStarAnimation {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div> <!-- Container for stars -->
+  
+  <!-- Diwali Blaster Container -->
+  <div id="diwali-blast" class="diwali-blast"></div>
+
+  <header>
+    <h1>Welcome to My Portfolio</h1>
+  </header>
+  <main>
+    <h2>Hi, I'm Mahalakshmi L</h2>
+    <hr style="width: 50%; border: 1px solid white; margin: 10px auto;">
+    <p>Explore my resume and bio-data to learn more about me!😎</p>
+    <div class="buttons">
+      <button class="button" onclick="window.location.href='resume.htm'">Resume</button>
+      <button class="button" onclick="window.location.href='biodata.htm'">Bio-data</button>
+      <button class="button" onclick="window.location.href='index1.htm'">Feedback</button>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2024 Mahalakshmi L</p>
+  </footer>
+
+  <script>
+    // Function to create stars for normal background effect
+    function createStars() {
+      const starContainer = document.getElementById("stars");
+      const numberOfStars = 50; // Number of stars to create
+
+      for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.style.width = `${Math.random() * 5 + 2}px`; // Random width for stars
+        star.style.height = star.style.width; // Height equal to width for circular stars
+        star.style.top = `${Math.random() * 100}vh`; // Random top position
+        star.style.left = `${Math.random() * 100}vw`; // Random left position
+        star.style.animationDuration = `${Math.random() * 2 + 3}s`; // Random duration for each star
+        star.style.animationDelay = `${Math.random() * 2}s`; // Random delay for each star
+        starContainer.appendChild(star);
+      }
+    }
+
+    // Function to create the Diwali Blaster effect
+    function createDiwaliBlaster() {
+      const diwaliBlast = document.getElementById('diwali-blast');
+      const numberOfStars = 30; // Number of stars for the burst
+      for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('diwali-star');
+        // Randomly position the stars around the center
+        const angle = Math.random() * 360;
+        const distance = Math.random() * 100 + 50; // Random distance from center
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+        star.style.setProperty('--x', `${x}px`);
+        star.style.setProperty('--y', `${y}px`);
+        diwaliBlast.appendChild(star);
+      }
+
+      // Remove the Diwali Blaster effect after animation
+      setTimeout(() => {
+        diwaliBlast.innerHTML = '';
+      }, 1000);
+    }
+
+    // Call the functions to create stars and Diwali blaster effect
+    createStars();
+    createDiwaliBlaster();
+  </script>
+</body>
+</html>
